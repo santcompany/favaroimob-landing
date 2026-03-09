@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fávaro Imobiliária — Inspirando Conquistas · Mato Grosso do Sul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:    #3D5A3E;
+  --green-l:  #4E7450;
+  --green-d:  #2A3F2B;
+  --green-xl: #F0F5F0;
+  --gold:     #C8A84B;
+  --gold-l:   #E0C068;
+  --gold-d:   #9A7A30;
+  --cream:    #FAF8F3;
+  --white:    #FFFFFF;
+  --ink:      #181C18;
+  --ink-mid:  #3A4A3A;
+  --ink-lite: #7A8A7A;
+  --border:   rgba(61,90,62,.1);
+  --border-g: rgba(200,168,75,.2);
+}
+
+html { background: var(--cream); scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ══ CURSOR ══ */
+#cur {
+  position: fixed; z-index: 9999; pointer-events: none;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green);
+  transform: translate(-50%,-50%);
+  transition: width .2s, height .2s, background .2s;
+}
+#cur-ring {
+  position: fixed; z-index: 9998; pointer-events: none;
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1.5px solid rgba(61,90,62,.3);
+  transform: translate(-50%,-50%);
+  transition: left .12s ease, top .12s ease, width .3s, height .3s;
+}
+body.hov #cur { width: 14px; height: 14px; background: var(--gold); }
+body.hov #cur-ring { width: 50px; height: 50px; border-color: var(--gold); }
+
+/* ══ NAV ══ */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 200;
+  height: 66px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 60px;
+  background: rgba(250,248,243,.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .3s;
+}
+nav.scrolled { box-shadow: 0 4px 28px rgba(61,90,62,.08); }
+
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo-box {
+  width: 38px; height: 38px;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-logo-box svg { width: 20px; height: 20px; }
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+.nav-logo-main {
+  font-family: 'Fraunces', serif;
+  font-size: 17px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--green);
+}
+.nav-logo-sub {
+  font-size: 9px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--ink-lite); margin-top: 2px;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 11px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--ink-mid); text-decoration: none; transition: color .2s; cursor: none;
+}
+.nav-links a:hover { color: var(--green); }
+.nav-cta {
+  background: var(--green); color: #fff;
+  padding: 11px 26px;
+  font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase;
+  cursor: none; text-decoration: none;
+  transition: all .25s; border-radius: 2px;
+}
+.nav-cta:hover { background: var(--green-l); }
+
+/* ══ HERO ══ */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding-top: 66px;
+  position: relative; overflow: hidden;
+}
+
+.hero-left {
+  background: var(--green);
+  padding: 80px 60px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+/* Texture / pattern */
+.hero-left::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 80% 20%, rgba(200,168,75,.1) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(255,255,255,.04) 0%, transparent 40%);
+}
+/* Big watermark */
+.hero-wm {
+  position: absolute; right: -8%; bottom: -18%;
+  font-family: 'Fraunces', serif;
+  font-size: 32vw; font-weight: 700; color: rgba(255,255,255,.03);
+  pointer-events: none; user-select: none; line-height: 1; letter-spacing: -8px;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(200,168,75,.15); border: 1px solid rgba(200,168,75,.3);
+  padding: 6px 16px; margin-bottom: 28px; width: fit-content;
+  animation: fUp .5s ease .1s both;
+}
+.hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.hero-tag-text {
+  font-size: 10px; font-weight: 300; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(200,168,75,.85);
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 4.5vw, 68px);
+  font-weight: 600; line-height: 1.02; letter-spacing: -.5px;
+  color: #fff; margin-bottom: 20px;
+  animation: fUp .6s ease .2s both;
+}
+.hero-title em { font-style: italic; font-weight: 300; color: var(--gold-l); }
+
+.hero-desc {
+  font-size: 15px; font-weight: 300; line-height: 1.85;
+  color: rgba(255,255,255,.6); max-width: 440px; margin-bottom: 40px;
+  animation: fUp .6s ease .35s both;
+}
+.hero-desc strong { color: rgba(255,255,255,.85); font-weight: 400; }
+
+.hero-actions {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px;
+  animation: fUp .6s ease .5s both;
+}
+.btn-gold {
+  background: var(--gold); color: var(--ink);
+  padding: 14px 36px; border-radius: 2px;
+  font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+  cursor: none; text-decoration: none; display: inline-block;
+  transition: all .25s;
+}
+.btn-gold:hover { background: var(--gold-l); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(200,168,75,.35); }
+.btn-outline-w {
+  background: transparent; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.65);
+  padding: 13px 28px; border-radius: 2px;
+  font-size: 11px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; cursor: none; display: inline-block; transition: all .25s;
+}
+.btn-outline-w:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+
+.hero-badges {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: fUp .6s ease .65s both;
+}
+.hb-item {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
+  padding: 12px 16px; display: flex; align-items: center; gap: 10px;
+}
+.hb-icon { font-size: 18px; }
+.hb-num {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 600; color: #fff; line-height: 1;
+}
+.hb-lbl { font-size: 10px; font-weight: 300; color: rgba(255,255,255,.4); letter-spacing: .5px; margin-top: 1px; }
+
+/* Hero right */
+.hero-right {
+  background: var(--cream);
+  display: flex; flex-direction: column;
+}
+.hr-top {
+  flex: 1;
+  background: var(--green-xl);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 60px 48px;
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.hr-top::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 30%, rgba(200,168,75,.07) 0%, transparent 55%);
+}
+.hr-quote-block { position: relative; z-index: 1; }
+.hr-qmark {
+  font-family: 'Fraunces', serif;
+  font-size: 80px; font-weight: 300; color: var(--gold); line-height: .6;
+  margin-bottom: 8px; display: block;
+}
+.hr-quote {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 400; font-style: italic;
+  color: var(--green-d); line-height: 1.45; margin-bottom: 20px;
+}
+.hr-attr {
+  font-size: 11px; font-weight: 300; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-lite); display: flex; align-items: center; gap: 8px;
+}
+.hr-attr::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+
+.hr-bottom {
+  background: var(--white);
+  padding: 40px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.hr-feat {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 16px; border: 1px solid var(--border); transition: border-color .2s;
+}
+.hr-feat:hover { border-color: var(--border-g); }
+.hr-feat-icon { font-size: 22px; margin-bottom: 4px; }
+.hr-feat-title {
+  font-family: 'Fraunces', serif;
+  font-size: 15px; font-weight: 600; color: var(--green-d);
+}
+.hr-feat-desc { font-size: 11px; font-weight: 300; color: var(--ink-lite); line-height: 1.5; }
+
+/* ══ TICKER ══ */
+.ticker { background: var(--green-d); padding: 12px 0; overflow: hidden; }
+.ticker-track { display: flex; animation: tScroll 26s linear infinite; width: max-content; }
+.ticker-item {
+  display: flex; align-items: center; gap: 10px; padding: 0 24px;
+  white-space: nowrap;
+  font-size: 11px; font-weight: 300; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+}
+.ts { color: var(--gold); font-size: 8px; }
+@keyframes tScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ══ BUSCA DE IMÓVEL — ELEMENTO INTERATIVO ══ */
+.busca {
+  padding: 120px 60px;
+  background: var(--white);
+  position: relative; overflow: hidden;
+}
+.busca-bg {
+  position: absolute; right: -5%; bottom: -15%;
+  font-family: 'Fraunces', serif;
+  font-size: 34vw; font-weight: 700; color: rgba(61,90,62,.03);
+  pointer-events: none; user-select: none; line-height: 1;
+}
+
+.busca-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 64px; align-items: start; }
+
+/* Filtro */
+.busca-filtro {}
+.bf-intro { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--ink-mid); margin-bottom: 32px; }
+
+.bf-row { margin-bottom: 20px; }
+.bf-row-label {
+  font-size: 10px; font-weight: 400; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--ink-lite); margin-bottom: 10px; display: block;
+}
+.bf-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.bf-chip {
+  padding: 10px 18px; border-radius: 2px;
+  background: var(--green-xl); border: 1.5px solid rgba(61,90,62,.12);
+  font-size: 13px; font-weight: 300; color: var(--ink-mid);
+  cursor: none; transition: all .2s; user-select: none;
+  display: flex; align-items: center; gap: 7px;
+}
+.bf-chip:hover { border-color: var(--green); color: var(--green); background: rgba(61,90,62,.04); }
+.bf-chip.on { background: rgba(61,90,62,.08); border-color: var(--green); color: var(--green); font-weight: 400; }
+.bf-chip .chip-icon { font-size: 14px; }
+
+.bf-btn {
+  margin-top: 24px;
+  background: var(--green); color: #fff;
+  padding: 16px 0; width: 100%; border: none; border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase;
+  cursor: none; transition: all .25s;
+}
+.bf-btn:hover { background: var(--green-l); }
+.bf-btn:disabled { background: rgba(61,90,62,.2); color: rgba(61,90,62,.4); cursor: not-allowed; }
+
+/* Result */
+.busca-result { display: none; }
+.busca-result.show { display: block; animation: fUp .4s ease both; }
+.br-header {
+  background: var(--green); padding: 28px 28px 20px;
+  margin-bottom: 0;
+}
+.br-h-tag {
+  font-size: 9px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(200,168,75,.7); margin-bottom: 8px;
+}
+.br-h-title {
+  font-family: 'Fraunces', serif;
+  font-size: 24px; font-weight: 600; color: #fff; line-height: 1.1;
+}
+.br-body { background: var(--green-xl); border: 1px solid var(--border); border-top: none; padding: 28px; }
+.br-desc { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--ink-mid); margin-bottom: 20px; }
+.br-items { margin-bottom: 24px; }
+.br-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; font-weight: 300; color: var(--ink-mid);
+  padding: 8px 0; border-bottom: 1px solid rgba(61,90,62,.07);
+}
+.br-item::before { content: '▸'; color: var(--green); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+.br-cta {
+  background: var(--green); color: #fff;
+  padding: 14px 28px; text-decoration: none;
+  font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase;
+  display: inline-block; border-radius: 2px; transition: all .25s; cursor: none;
+}
+.br-cta:hover { background: var(--green-l); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(61,90,62,.25); }
+.br-reset {
+  display: inline-block; margin-left: 12px;
+  font-size: 11px; font-weight: 300; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--ink-lite); cursor: none; background: none; border: none; transition: color .2s;
+}
+.br-reset:hover { color: var(--green); }
+
+/* Info side */
+.busca-info { position: sticky; top: 88px; }
+.bi-alert {
+  background: rgba(200,168,75,.08); border: 1px solid rgba(200,168,75,.25);
+  border-left: 3px solid var(--gold);
+  padding: 20px 20px 20px 22px; margin-bottom: 16px;
+}
+.bi-alert-title {
+  font-family: 'Fraunces', serif;
+  font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 6px;
+}
+.bi-alert-desc { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--ink-mid); }
+.bi-alert-tag { font-size: 10px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-d); margin-top: 8px; display: block; }
+
+/* ══ EQUIPE ══ */
+.equipe {
+  padding: 120px 60px;
+  background: var(--green);
+  position: relative; overflow: hidden;
+}
+.equipe::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(200,168,75,.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 10% 20%, rgba(255,255,255,.02) 0%, transparent 40%);
+}
+.equipe .sec-eyebrow { color: rgba(200,168,75,.6); }
+.equipe .sec-eyebrow::before { background: rgba(200,168,75,.4); }
+.equipe .sec-title { color: #fff; }
+.equipe .sec-sub { color: rgba(255,255,255,.45); }
+
+.eq-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 64px;
+  position: relative; z-index: 1;
+}
+.eq-card {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+  padding: 36px 28px; transition: all .3s; cursor: none;
+}
+.eq-card:hover { background: rgba(255,255,255,.08); border-color: rgba(200,168,75,.3); transform: translateY(-4px); }
+.eq-role {
+  font-size: 9px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(200,168,75,.6); margin-bottom: 12px;
+}
+.eq-name {
+  font-family: 'Fraunces', serif;
+  font-size: 26px; font-weight: 600; color: #fff; margin-bottom: 6px; line-height: 1.1;
+}
+.eq-desc { font-size: 13px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.4); margin-bottom: 20px; }
+.eq-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(200,168,75,.6);
+}
+.eq-tag::before { content: ''; width: 16px; height: 1px; background: rgba(200,168,75,.4); }
+
+/* Cultura card */
+.eq-cultura {
+  grid-column: span 3;
+  background: rgba(200,168,75,.08); border: 1px solid rgba(200,168,75,.2);
+  padding: 36px 40px;
+  display: flex; align-items: center; gap: 48px;
+}
+.ec-quote {
+  font-family: 'Fraunces', serif;
+  font-size: 20px; font-weight: 400; font-style: italic;
+  color: rgba(255,255,255,.8); line-height: 1.5; flex: 1;
+}
+.ec-divider { width: 1px; height: 60px; background: rgba(200,168,75,.2); flex-shrink: 0; }
+.ec-attr { font-size: 12px; font-weight: 300; color: rgba(200,168,75,.5); flex-shrink: 0; text-align: right; }
+
+/* ══ SERVIÇOS ══ */
+.servicos {
+  padding: 120px 60px;
+  background: var(--cream);
+  position: relative; overflow: hidden;
+}
+.srv-bg {
+  position: absolute; left: -4%; top: -10%;
+  font-family: 'Fraunces', serif;
+  font-size: 32vw; font-weight: 700; color: rgba(61,90,62,.035);
+  pointer-events: none; user-select: none; line-height: 1;
+}
+.srv-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1px;
+  background: var(--border); margin-top: 64px;
+}
+.srv-card {
+  background: var(--cream); padding: 40px 28px;
+  position: relative; overflow: hidden;
+  transition: background .3s; cursor: none;
+}
+.srv-card:hover { background: var(--white); }
+.srv-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  transform: scaleX(0); transition: transform .4s ease;
+}
+.srv-card:hover::after { transform: scaleX(1); }
+.srv-icon { font-size: 30px; margin-bottom: 14px; }
+.srv-title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 8px;
+}
+.srv-desc { font-size: 12px; font-weight: 300; line-height: 1.8; color: var(--ink-mid); }
+.srv-num {
+  position: absolute; top: 20px; right: 20px;
+  font-family: 'Fraunces', serif; font-size: 44px; font-weight: 700;
+  color: rgba(61,90,62,.06); line-height: 1;
+}
+
+/* ══ DEPOIMENTOS ══ */
+.depos {
+  padding: 120px 60px;
+  background: var(--white); overflow: hidden;
+}
+.depo-track-wrap { overflow: hidden; margin-top: 56px; }
+.depo-track { display: flex; gap: 20px; animation: dScroll 30s linear infinite; width: max-content; }
+.depo-track:hover { animation-play-state: paused; }
+@keyframes dScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.depo-card {
+  background: var(--green-xl); border: 1px solid var(--border);
+  padding: 36px 32px; width: 340px; flex-shrink: 0;
+  position: relative; transition: border-color .3s; cursor: none;
+}
+.depo-card:hover { border-color: rgba(61,90,62,.25); }
+.depo-card::before {
+  content: '"'; position: absolute; top: 10px; right: 20px;
+  font-family: 'Fraunces', serif; font-size: 68px; font-weight: 300;
+  color: rgba(61,90,62,.07); line-height: 1;
+}
+.dc-stars { color: var(--gold); font-size: 12px; letter-spacing: 2px; margin-bottom: 12px; }
+.dc-text { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--ink-mid); font-style: italic; margin-bottom: 18px; }
+.dc-author { display: flex; align-items: center; gap: 8px; }
+.dc-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
+.dc-name { font-size: 12px; font-weight: 400; color: var(--ink); }
+.dc-tipo { font-size: 11px; font-weight: 300; color: var(--green-l); margin-top: 1px; }
+
+/* ══ DICAS ══ */
+.dicas {
+  padding: 100px 60px;
+  background: var(--green-xl);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.dicas-left {}
+.dicas-right {}
+.dica-card {
+  background: var(--white); border: 1px solid var(--border);
+  padding: 24px 28px; margin-bottom: 12px;
+  position: relative; overflow: hidden;
+  transition: border-color .3s, transform .2s; cursor: none;
+}
+.dica-card:hover { border-color: rgba(61,90,62,.3); transform: translateX(4px); }
+.dica-card::before {
+  content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+  background: var(--green);
+}
+.dica-num {
+  font-size: 9px; font-weight: 400; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--green); margin-bottom: 5px;
+}
+.dica-title {
+  font-family: 'Fraunces', serif;
+  font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 4px;
+}
+.dica-desc { font-size: 12px; font-weight: 300; line-height: 1.7; color: var(--ink-mid); }
+
+/* ══ CTA FINAL ══ */
+.cta-final {
+  padding: 120px 60px;
+  background: var(--green-d);
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-final::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(200,168,75,.07) 0%, transparent 55%),
+              radial-gradient(ellipse at 75% 30%, rgba(255,255,255,.02) 0%, transparent 40%);
+}
+.cta-bg-f {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-family: 'Fraunces', serif; font-size: 44vw; font-weight: 700;
+  color: rgba(255,255,255,.025); pointer-events: none; user-select: none; line-height: 1;
+}
+.cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.cta-eyebrow {
+  font-size: 10px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(200,168,75,.5); margin-bottom: 14px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.cta-eyebrow::before, .cta-eyebrow::after { content: ''; width: 24px; height: 1px; background: rgba(200,168,75,.3); }
+.cta-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 6vw, 72px); font-weight: 600; line-height: 1;
+  color: #fff; margin-bottom: 18px;
+}
+.cta-title em { font-style: italic; font-weight: 300; color: var(--gold-l); }
+.cta-sub { font-size: 15px; font-weight: 300; color: rgba(255,255,255,.5); line-height: 1.8; margin-bottom: 48px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-creci {
+  margin-top: 44px; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  font-size: 11px; font-weight: 300; color: rgba(255,255,255,.2);
+  letter-spacing: 1px;
+}
+.cta-creci strong { color: rgba(255,255,255,.35); font-weight: 300; }
+
+/* ══ FOOTER ══ */
+footer {
+  background: var(--ink);
+  padding: 28px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+}
+.fl {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(61,90,62,.5);
+}
+.fc { font-size: 11px; font-weight: 300; color: rgba(255,255,255,.2); }
+.flinks { display: flex; gap: 20px; }
+.flinks a { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(200,168,75,.25); text-decoration: none; transition: color .2s; cursor: none; }
+.flinks a:hover { color: var(--gold); }
+
+/* ══ SHARED ══ */
+.sec-eyebrow {
+  font-size: 10px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--green); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.sec-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--green); }
+.sec-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 3.5vw, 50px); font-weight: 600; line-height: 1.05;
+  color: var(--ink); margin-bottom: 12px;
+}
+.sec-title em { font-style: italic; font-weight: 300; color: var(--green); }
+.sec-sub { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--ink-mid); max-width: 520px; }
+
+/* ══ REVEAL ══ */
+.rv { opacity: 0; transition: opacity .8s ease, transform .8s ease; }
+.rv.fb { transform: translateY(26px); } .rv.fl { transform: translateX(-26px); }
+.rv.fr { transform: translateX(26px); } .rv.sc { transform: scale(.97); }
+.rv.v  { opacity: 1; transform: none !important; }
+.rv.d1 { transition-delay: .1s; } .rv.d2 { transition-delay: .22s; }
+.rv.d3 { transition-delay: .34s; } .rv.d4 { transition-delay: .46s; }
+@keyframes fUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 1024px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 60px 24px 40px; }
+  .hero-right { min-height: auto; }
+  .busca, .servicos, .depos, .cta-final, .equipe { padding: 80px 24px; }
+  .dicas { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
+  .busca-layout { grid-template-columns: 1fr; gap: 48px; }
+  .busca-info { position: static; }
+  .eq-grid { grid-template-columns: 1fr 1fr; }
+  .eq-cultura { grid-column: span 2; flex-direction: column; gap: 24px; }
+  .ec-divider { width: 60px; height: 1px; }
+  .ec-attr { text-align: left; }
+  .srv-grid { grid-template-columns: 1fr 1fr; }
+  footer { padding: 24px; flex-direction: column; text-align: center; }
+}
+@media (max-width: 600px) {
+  .hero-actions { flex-direction: column; }
+  .hero-badges { flex-direction: column; }
+  .eq-grid { grid-template-columns: 1fr; }
+  .eq-cultura { grid-column: span 1; }
+  .srv-grid { grid-template-columns: 1fr; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .hr-bottom { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
+        <path d="M3 10L12 3l9 7v10a1 1 0 01-1 1H4a1 1 0 01-1-1V10z"/>
+        <path d="M9 21V12h6v9"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">Fávaro</span>
+      <span class="nav-logo-sub">Imobiliária · MS</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#busca">Buscar imóvel</a></li>
+    <li><a href="#equipe">Equipe</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+  </ul>
+  <a href="https://linktr.ee/imobiliariafava" class="nav-cta" target="_blank">Falar com corretor</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-wm">F</div>
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span class="hero-tag-text">CRECI 15240 PJ · Mato Grosso do Sul</span>
+    </div>
+    <h1 class="hero-title">
+      Inspirando<br>
+      <em>conquistas</em><br>
+      e celebrando<br>
+      vitórias.
+    </h1>
+    <p class="hero-desc">
+      Compra, venda e locações em Mato Grosso do Sul. A imobiliária que mais cresce no estado — com <strong>equipe experiente, imóveis exclusivos</strong> e atendimento que vai até o fim.
+    </p>
+    <div class="hero-actions">
+      <a href="#busca" class="btn-gold">Encontrar meu imóvel →</a>
+      <a href="https://linktr.ee/imobiliariafava" class="btn-outline-w" target="_blank">Falar agora</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hb-item">
+        <div class="hb-icon">🏠</div>
+        <div>
+          <div class="hb-num">+500</div>
+          <div class="hb-lbl">Negócios fechados</div>
+        </div>
+      </div>
+      <div class="hb-item">
+        <div class="hb-icon">📍</div>
+        <div>
+          <div class="hb-num">MS</div>
+          <div class="hb-lbl">Mato Grosso do Sul</div>
+        </div>
+      </div>
+      <div class="hb-item">
+        <div class="hb-icon">✨</div>
+        <div>
+          <div class="hb-num">100%</div>
+          <div class="hb-lbl">Comprometidos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hr-top">
+      <div class="hr-quote-block">
+        <span class="hr-qmark">"</span>
+        <div class="hr-quote">Resultados nascem do trabalho. Mas empresas sólidas nascem da cultura e das pessoas que caminham juntas.</div>
+        <div class="hr-attr">Fávaro Imobiliária</div>
+      </div>
+    </div>
+    <div class="hr-bottom">
+      <div class="hr-feat">
+        <div class="hr-feat-icon">🏡</div>
+        <div class="hr-feat-title">Compra & Venda</div>
+        <div class="hr-feat-desc">Negociação transparente do início ao fim</div>
+      </div>
+      <div class="hr-feat">
+        <div class="hr-feat-icon">🔑</div>
+        <div class="hr-feat-title">Locação</div>
+        <div class="hr-feat-desc">Portfólio de imóveis para alugar em MS</div>
+      </div>
+      <div class="hr-feat">
+        <div class="hr-feat-icon">🌾</div>
+        <div class="hr-feat-title">Imóvel Rural</div>
+        <div class="hr-feat-desc">Fazendas e sítios com experiência de campo</div>
+      </div>
+      <div class="hr-feat">
+        <div class="hr-feat-icon">🏗️</div>
+        <div class="hr-feat-title">Lançamentos</div>
+        <div class="hr-feat-desc">Imóveis na planta — com análise honesta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">Compra <span class="ts">◆</span></div>
+    <div class="ticker-item">Venda <span class="ts">◆</span></div>
+    <div class="ticker-item">Locação <span class="ts">◆</span></div>
+    <div class="ticker-item">Imóveis Exclusivos <span class="ts">◆</span></div>
+    <div class="ticker-item">Imóvel Rural <span class="ts">◆</span></div>
+    <div class="ticker-item">Mato Grosso do Sul <span class="ts">◆</span></div>
+    <div class="ticker-item">CRECI 15240 PJ <span class="ts">◆</span></div>
+    <div class="ticker-item">Sua Conquista <span class="ts">◆</span></div>
+    <div class="ticker-item">Compra <span class="ts">◆</span></div>
+    <div class="ticker-item">Venda <span class="ts">◆</span></div>
+    <div class="ticker-item">Locação <span class="ts">◆</span></div>
+    <div class="ticker-item">Imóveis Exclusivos <span class="ts">◆</span></div>
+    <div class="ticker-item">Imóvel Rural <span class="ts">◆</span></div>
+    <div class="ticker-item">Mato Grosso do Sul <span class="ts">◆</span></div>
+    <div class="ticker-item">CRECI 15240 PJ <span class="ts">◆</span></div>
+    <div class="ticker-item">Sua Conquista <span class="ts">◆</span></div>
+  </div>
+</div>
+
+<!-- BUSCA DE IMÓVEL — ELEMENTO INTERATIVO -->
+<section class="busca rv fb" id="busca">
+  <div class="busca-bg">F</div>
+  <div class="sec-eyebrow rv fb">Ferramenta de busca</div>
+  <h2 class="sec-title rv fb d1">Encontre o imóvel<br><em>certo para você.</em></h2>
+  <p class="sec-sub rv fb d2">Sem enrolação. Selecione o que procura e um corretor da Fávaro entra em contato com opções reais para o seu perfil.</p>
+
+  <div class="busca-layout">
+    <div class="busca-filtro rv fl d1">
+      <p class="bf-intro">Não perca dinheiro buscando imóvel sem orientação profissional. Selecione abaixo e receba atendimento personalizado de um corretor Fávaro.</p>
+
+      <!-- Finalidade -->
+      <div class="bf-row">
+        <span class="bf-row-label">O que você quer fazer?</span>
+        <div class="bf-chips">
+          <div class="bf-chip" data-g="fin" data-v="comprar" onclick="selectBf(this)"><span class="chip-icon">🏠</span> Comprar</div>
+          <div class="bf-chip" data-g="fin" data-v="alugar" onclick="selectBf(this)"><span class="chip-icon">🔑</span> Alugar</div>
+          <div class="bf-chip" data-g="fin" data-v="vender" onclick="selectBf(this)"><span class="chip-icon">💰</span> Vender meu imóvel</div>
+        </div>
+      </div>
+
+      <!-- Tipo -->
+      <div class="bf-row">
+        <span class="bf-row-label">Tipo de imóvel</span>
+        <div class="bf-chips">
+          <div class="bf-chip" data-g="tipo" data-v="casa" onclick="selectBf(this)"><span class="chip-icon">🏡</span> Casa</div>
+          <div class="bf-chip" data-g="tipo" data-v="apto" onclick="selectBf(this)"><span class="chip-icon">🏢</span> Apartamento</div>
+          <div class="bf-chip" data-g="tipo" data-v="terreno" onclick="selectBf(this)"><span class="chip-icon">📐</span> Terreno</div>
+          <div class="bf-chip" data-g="tipo" data-v="rural" onclick="selectBf(this)"><span class="chip-icon">🌾</span> Rural / Fazenda</div>
+          <div class="bf-chip" data-g="tipo" data-v="comercial" onclick="selectBf(this)"><span class="chip-icon">🏪</span> Comercial</div>
+        </div>
+      </div>
+
+      <!-- Valor -->
+      <div class="bf-row">
+        <span class="bf-row-label">Faixa de valor</span>
+        <div class="bf-chips">
+          <div class="bf-chip" data-g="valor" data-v="ate200" onclick="selectBf(this)">Até R$ 200 mil</div>
+          <div class="bf-chip" data-g="valor" data-v="200a500" onclick="selectBf(this)">R$ 200k – 500k</div>
+          <div class="bf-chip" data-g="valor" data-v="500a1m" onclick="selectBf(this)">R$ 500k – 1 mi</div>
+          <div class="bf-chip" data-g="valor" data-v="acima1m" onclick="selectBf(this)">Acima de R$ 1 mi</div>
+        </div>
+      </div>
+
+      <!-- Urgência -->
+      <div class="bf-row">
+        <span class="bf-row-label">Quando pretende concluir?</span>
+        <div class="bf-chips">
+          <div class="bf-chip" data-g="prazo" data-v="agora" onclick="selectBf(this)">🔥 O quanto antes</div>
+          <div class="bf-chip" data-g="prazo" data-v="3meses" onclick="selectBf(this)">Nos próximos 3 meses</div>
+          <div class="bf-chip" data-g="prazo" data-v="sempressa" onclick="selectBf(this)">Sem pressa, ainda pesquisando</div>
+        </div>
+      </div>
+
+      <!-- Resultado ou Botão -->
+      <div class="busca-result" id="busca-result">
+        <div class="br-header">
+          <div class="br-h-tag" id="br-tag">Perfil identificado</div>
+          <div class="br-h-title" id="br-title">—</div>
+        </div>
+        <div class="br-body">
+          <p class="br-desc" id="br-desc">—</p>
+          <div class="br-items" id="br-items"></div>
+          <a class="br-cta" id="br-cta" href="#" target="_blank">Falar com corretor →</a>
+          <button class="br-reset" onclick="resetBusca()">Refazer busca</button>
+        </div>
+      </div>
+
+      <button class="bf-btn" id="bf-btn" disabled onclick="calcBusca()">Ver opções disponíveis →</button>
+    </div>
+
+    <!-- Info side -->
+    <div class="busca-info rv fr d2">
+      <div class="bi-alert">
+        <div class="bi-alert-title">3 erros que fazem você perder dinheiro</div>
+        <div class="bi-alert-desc">Comprar sem visitar pessoalmente, não verificar a documentação e ignorar o IPTU e taxas. Um corretor Fávaro orienta você em cada etapa para evitar armadilhas comuns.</div>
+        <span class="bi-alert-tag">Pergunta aí, Corretor! →</span>
+      </div>
+      <div class="bi-alert" style="border-left-color:var(--green); background:rgba(61,90,62,.05);">
+        <div class="bi-alert-title">Imóvel na planta vale a pena?</div>
+        <div class="bi-alert-desc">Depende. Construtora, prazo de entrega, cláusulas contratuais e localização fazem toda a diferença. A Fávaro analisa cada lançamento com honestidade antes de recomendar.</div>
+        <span class="bi-alert-tag">Análise gratuita com corretor →</span>
+      </div>
+      <div class="bi-alert" style="border-left-color:var(--gold-d); background:rgba(200,168,75,.05);">
+        <div class="bi-alert-title">Financiamento com CrediPronto</div>
+        <div class="bi-alert-desc">Parceria com CrediPronto para simulação e aprovação de financiamento imobiliário. Mais agilidade para fechar o negócio com segurança.</div>
+        <span class="bi-alert-tag">Simular financiamento →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="equipe rv fb" id="equipe">
+  <div class="sec-eyebrow rv fb">Nossa equipe</div>
+  <h2 class="sec-title rv fb d1">Pessoas que<br><em>caminham junto.</em></h2>
+  <p class="sec-sub rv fb d2">Cada conquista de um cliente é uma vitória nossa. A Fávaro é feita de pessoas que acreditam no que fazem.</p>
+
+  <div class="eq-grid">
+    <div class="eq-card rv sc">
+      <div class="eq-role">Corretora · Fundadora</div>
+      <div class="eq-name">Sônia<br>Fávaro</div>
+      <div class="eq-desc">Décadas de experiência em imóveis no Mato Grosso do Sul. Referência em atendimento humano e negociação que respeita o sonho de cada cliente.</div>
+      <div class="eq-tag">Atendimento presencial</div>
+    </div>
+    <div class="eq-card rv sc d1">
+      <div class="eq-role">Corretor · Especialista</div>
+      <div class="eq-name">Pergunta<br>aí, Corretor!</div>
+      <div class="eq-desc">Formato descomplicado de tirar dúvidas sobre financiamento, documentação, planta, locação e mais. Educação imobiliária para você decidir com segurança.</div>
+      <div class="eq-tag">Dúvidas respondidas</div>
+    </div>
+    <div class="eq-card rv sc d2">
+      <div class="eq-role">Corretor · Rural</div>
+      <div class="eq-name">Campo e<br>Fazenda</div>
+      <div class="eq-desc">Especialista em imóveis rurais, sítios e fazendas em Mato Grosso do Sul. Conhece o terreno como ninguém — literalmente.</div>
+      <div class="eq-tag">Imóvel rural</div>
+    </div>
+    <div class="eq-cultura rv fb d1">
+      <div class="ec-quote">"Resultados nascem do trabalho. Mas empresas sólidas nascem da cultura e das pessoas que caminham juntas."</div>
+      <div class="ec-divider"></div>
+      <div class="ec-attr">Raphael Melhado<br><span style="font-size:10px;opacity:.5">compartilhado pela Fávaro</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="servicos rv fb" id="servicos">
+  <div class="srv-bg">F</div>
+  <div class="sec-eyebrow rv fb">O que fazemos</div>
+  <h2 class="sec-title rv fb d1">Tudo que você precisa<br><em>em um só lugar.</em></h2>
+  <p class="sec-sub rv fb d2">Da busca à assinatura, a Fávaro está junto. Imóveis residenciais, rurais, comerciais — compra, venda, locação e lançamentos.</p>
+  <div class="srv-grid">
+    <div class="srv-card rv sc">
+      <div class="srv-num">01</div>
+      <div class="srv-icon">🏡</div>
+      <div class="srv-title">Compra & Venda</div>
+      <div class="srv-desc">Negociação transparente com análise de documentação, avaliação de mercado e acompanhamento jurídico em cada etapa.</div>
+    </div>
+    <div class="srv-card rv sc d1">
+      <div class="srv-num">02</div>
+      <div class="srv-icon">🔑</div>
+      <div class="srv-title">Locação</div>
+      <div class="srv-desc">Portfólio curado de imóveis para alugar. Processo ágil, contrato seguro e suporte ao longo de todo o período.</div>
+    </div>
+    <div class="srv-card rv sc d2">
+      <div class="srv-num">03</div>
+      <div class="srv-icon">🌾</div>
+      <div class="srv-title">Imóvel Rural</div>
+      <div class="srv-desc">Fazendas, sítios e terras em Mato Grosso do Sul. Equipe com vivência no campo e conhecimento técnico de avaliação rural.</div>
+    </div>
+    <div class="srv-card rv sc d3">
+      <div class="srv-num">04</div>
+      <div class="srv-icon">🏗️</div>
+      <div class="srv-title">Lançamentos</div>
+      <div class="srv-desc">Análise honesta de imóveis na planta — construtora, prazo, contrato e localização avaliados antes de qualquer indicação.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DICAS -->
+<section class="dicas rv fb">
+  <div class="dicas-left rv fl">
+    <div class="sec-eyebrow">Educação imobiliária</div>
+    <h2 class="sec-title">Erros que fazem<br><em>você perder</em><br>dinheiro.</h2>
+    <p class="sec-sub" style="margin-top:12px;">A Fávaro acredita que cliente bem informado fecha negócio melhor — e não se arrepende depois.</p>
+    <a href="https://linktr.ee/imobiliariafava" class="btn-gold" style="display:inline-block;margin-top:32px;" target="_blank">Falar com corretor →</a>
+  </div>
+  <div class="dicas-right rv fr d1">
+    <div class="dica-card">
+      <div class="dica-num">Erro 01</div>
+      <div class="dica-title">Comprar sem visitar presencialmente</div>
+      <div class="dica-desc">Fotos enganam. Orientação solar, barulho, vizinhança e estado real só se avalia pessoalmente. Não compre sem ver.</div>
+    </div>
+    <div class="dica-card">
+      <div class="dica-num">Erro 02</div>
+      <div class="dica-title">Ignorar a documentação do imóvel</div>
+      <div class="dica-desc">Matrícula, débitos de IPTU, inventário pendente, ação judicial — esses detalhes podem travar o negócio ou gerar prejuízo enorme.</div>
+    </div>
+    <div class="dica-card">
+      <div class="dica-num">Erro 03</div>
+      <div class="dica-title">Copiar o protocolo do amigo</div>
+      <div class="dica-desc">O imóvel que funcionou para seu amigo pode não funcionar para você. Perfil financeiro, objetivo e localização mudam tudo. Tenha seu corretor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depos rv fb">
+  <div class="sec-eyebrow rv fb">Clientes</div>
+  <h2 class="sec-title rv fb d1">Conquistas que<br><em>celebramos juntos.</em></h2>
+  <div class="depo-track-wrap">
+    <div class="depo-track">
+      <div class="depo-card"><div class="dc-stars">★★★★★</div><div class="dc-text">"A Sônia Fávaro acompanhou cada detalhe da compra da minha casa. Do primeiro imóvel visitado até a assinatura, sempre presente. Me senti segura em tudo."</div><div class="dc-author"><div class="dc-dot"></div><div><div class="dc-name">Mariana O.</div><div class="dc-tipo">Compra de residência · Campo Grande</div></div></div></div>
+      <div class="depo-card"><div class="dc-stars">★★★★★</div><div class="dc-text">"Pensei que imóvel na planta não valia a pena, mas o corretor da Fávaro analisou tudo e me mostrou um lançamento sólido. Confiei e não me arrependo."</div><div class="dc-author"><div class="dc-dot"></div><div><div class="dc-name">Roberto S.</div><div class="dc-tipo">Imóvel na planta · Mato Grosso do Sul</div></div></div></div>
+      <div class="depo-card"><div class="dc-stars">★★★★★</div><div class="dc-text">"Precisava vender minha fazenda e não sabia por onde começar. A Fávaro cuidou de tudo — avaliação, documentação e comprador certo. Resultado acima do esperado."</div><div class="dc-author"><div class="dc-dot"></div><div><div class="dc-name">Claudinho R.</div><div class="dc-tipo">Venda de fazenda · Interior MS</div></div></div></div>
+      <div class="depo-card"><div class="dc-stars">★★★★★</div><div class="dc-text">"Processo de locação rápido, documentação sem dor de cabeça e o imóvel exatamente como o corretor descreveu. Recomendo para todo mundo."</div><div class="dc-author"><div class="dc-dot"></div><div><div class="dc-name">Patrícia M.</div><div class="dc-tipo">Locação residencial</div></div></div></div>
+      <div class="depo-card"><div class="dc-stars">★★★★★</div><div class="dc-text">"A Fávaro realmente celebra as conquistas dos clientes. Quando assinei o contrato, o atendimento não acabou — continuaram me apoiando na mudança. Diferencial enorme."</div><div class="dc-author"><div class="dc-dot"></div><div><div class="dc-name">Fernanda K.</div><div class="dc-tipo">Compra de apartamento</div></div></div></div>
+      <!-- dup -->
+      <div class="depo-card"><div class="dc-stars">★★★★★</div><div class="dc-text">"A Sônia Fávaro acompanhou cada detalhe da compra da minha casa. Do primeiro imóvel visitado até a assinatura, sempre presente. Me senti segura em tudo."</div><div class="dc-author"><div class="dc-dot"></div><div><div class="dc-name">Mariana O.</div><div class="dc-tipo">Compra de residência · Campo Grande</div></div></div></div>
+      <div class="depo-card"><div class="dc-stars">★★★★★</div><div class="dc-text">"Precisava vender minha fazenda e não sabia por onde começar. A Fávaro cuidou de tudo — avaliação, documentação e comprador certo. Resultado acima do esperado."</div><div class="dc-author"><div class="dc-dot"></div><div><div class="dc-name">Claudinho R.</div><div class="dc-tipo">Venda de fazenda · Interior MS</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final rv fb">
+  <div class="cta-bg-f">F</div>
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Sua conquista começa aqui</div>
+    <h2 class="cta-title">Vamos <em>celebrar</em><br>juntos.</h2>
+    <p class="cta-sub">A Fávaro está pronta para encontrar o imóvel certo para você — ou vender o seu com o melhor resultado possível. Fale agora com um corretor.</p>
+    <div class="cta-btns">
+      <a href="https://linktr.ee/imobiliariafava" class="btn-gold" target="_blank">Falar com corretor →</a>
+      <a href="#busca" class="btn-outline-w">Buscar imóvel</a>
+    </div>
+    <div class="cta-creci">
+      <strong>Fávaro Imobiliária</strong> · CRECI 15240 PJ · Mato Grosso do Sul<br>
+      @favaroimobiliaria · Inspirando conquistas e celebrando vitórias ✨
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">Fávaro</div>
+  <div class="fc">Imobiliária · Mato Grosso do Sul · CRECI 15240 PJ · © 2025</div>
+  <div class="flinks">
+    <a href="https://linktr.ee/imobiliariafava" target="_blank">Linktree</a>
+    <a href="https://instagram.com/favaroimobiliaria" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+let rx=0,ry=0,mx=-100,my=-100;
+document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; });
+(function loop(){
+  rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,button,.bf-chip,.srv-card,.eq-card,.dica-card,.depo-card,.bi-alert,.hr-feat').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+/* ── NAV ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* ── REVEAL ── */
+const obs = new IntersectionObserver(e=>{
+  e.forEach(x=>{ if(x.isIntersecting){ x.target.classList.add('v'); obs.unobserve(x.target); } });
+},{threshold:.07,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ── BUSCA DE IMÓVEL ── */
+const WPP = 'https://api.whatsapp.com/send?phone=55';
+const bAnswers = {};
+
+function selectBf(el) {
+  const g = el.dataset.g;
+  const v = el.dataset.v;
+  document.querySelectorAll(`.bf-chip[data-g="${g}"]`).forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  bAnswers[g] = v;
+  // Enable button when at least finalidade and tipo are selected
+  const ready = bAnswers.fin && bAnswers.tipo;
+  document.getElementById('bf-btn').disabled = !ready;
+  // Hide result on reselect
+  document.getElementById('busca-result').classList.remove('show');
+  document.getElementById('bf-btn').style.display = 'block';
+}
+
+const bDB = {
+  comprar: {
+    casa:      { tag:'Compra de Casa', title:'Casas disponíveis no seu perfil', desc:'A Fávaro tem um portfólio de casas em diferentes bairros e faixas de valor em MS. Nosso corretor seleciona as opções que se encaixam no seu orçamento e estilo de vida — sem mostrar imóvel que não serve.', items:['Análise gratuita do seu perfil de comprador','Visita acompanhada por corretor especializado','Orientação sobre documentação e financiamento','Parceria com CrediPronto para agilidade'], msg:'Olá! Quero comprar uma casa em MS. Vim do site e gostaria de ver opções disponíveis no meu perfil.' },
+    apto:      { tag:'Compra de Apartamento', title:'Apartamentos no seu perfil', desc:'Apartamentos em Campo Grande e região — novos, usados e na planta. A Fávaro analisa cada opção com honestidade, incluindo condo, IPTU e potencial de valorização.', items:['Comparativo entre unidades disponíveis','Análise de condomínio e custo total','Avaliação honesta de lançamentos','Financiamento assistido'], msg:'Olá! Quero comprar um apartamento em MS. Vim do site e gostaria de opções no meu perfil.' },
+    terreno:   { tag:'Compra de Terreno', title:'Terrenos para construir ou investir', desc:'Terrenos urbanos e rurais em MS. Importante verificar zoneamento, topografia e documentação antes de qualquer sinal. A Fávaro orienta cada detalhe.', items:['Verificação de zoneamento e uso do solo','Análise documental completa','Avaliação de valorização por região','Opções para construção ou investimento'], msg:'Olá! Tenho interesse em comprar um terreno em MS. Vim do site.' },
+    rural:     { tag:'Imóvel Rural', title:'Fazendas e sítios em MS', desc:'Mato Grosso do Sul tem um dos mercados rurais mais aquecidos do Brasil. A Fávaro tem equipe especializada com conhecimento de campo para encontrar a propriedade certa.', items:['Avaliação técnica de propriedades rurais','Análise de CAR, CCIR e documentação rural','Conhecimento regional do interior MS','Negociação direta com proprietários'], msg:'Olá! Tenho interesse em comprar um imóvel rural (fazenda/sítio) em MS. Vim do site da Fávaro.' },
+    comercial: { tag:'Imóvel Comercial', title:'Ponto comercial ou sala profissional', desc:'Localização é tudo no imóvel comercial. A Fávaro analisa fluxo de pessoas, acessibilidade e concorrência antes de recomendar qualquer ponto.', items:['Análise de localização e fluxo','Verificação de uso comercial no imóvel','Contrato seguro para locação ou compra','Orientação para MEI, ME e PJ'], msg:'Olá! Tenho interesse em um imóvel comercial em MS. Vim do site da Fávaro.' },
+  },
+  alugar: {
+    casa:      { tag:'Locação de Casa', title:'Casas para alugar em MS', desc:'Processo de locação ágil e seguro. A Fávaro cuida de contrato, vistoria e documentação para que você entre no imóvel com tranquilidade.', items:['Portfólio atualizado de casas para alugar','Processo de aprovação rápido','Contrato de locação com segurança jurídica','Suporte durante todo o período'], msg:'Olá! Quero alugar uma casa em MS. Vim do site da Fávaro.' },
+    apto:      { tag:'Locação de Apartamento', title:'Apartamentos para alugar', desc:'Apartamentos em Campo Grande e região com diferentes perfis — studios, 2 e 3 quartos, com ou sem mobília. Fale com o corretor para ver disponibilidade.', items:['Apartamentos mobiliados e semimobiliados','Bairros centrais e residenciais','Processo de aprovação sem burocracia excessiva','Suporte pós-contrato'], msg:'Olá! Quero alugar um apartamento em MS. Vim do site da Fávaro.' },
+    comercial: { tag:'Locação Comercial', title:'Ponto comercial para alugar', desc:'Encontre o ponto ideal para o seu negócio com análise de localização, fluxo e adequação ao seu segmento.', items:['Análise de localização comercial','Flexibilidade de prazo contratual','Verificação de adequação ao uso','Agilidade na aprovação'], msg:'Olá! Quero alugar um imóvel comercial em MS. Vim do site da Fávaro.' },
+    rural:     { tag:'Locação Rural', title:'Arrendamento de propriedade rural', desc:'Arrendamento de fazendas e sítios em MS — para produção agropecuária, lazer ou moradia. Equipe especializada para orientar contrato de arrendamento.', items:['Contratos de arrendamento seguros','Propriedades em diferentes regiões do MS','Orientação sobre uso e zoneamento rural','Assessoria completa'], msg:'Olá! Tenho interesse em arrendar/alugar um imóvel rural em MS. Vim do site da Fávaro.' },
+    terreno:   { tag:'Locação de Terreno', title:'Terreno para locação', desc:'Terrenos para galpão, estacionamento, eventos ou outros fins. A Fávaro orienta o contrato e verifica a regularidade do imóvel.', items:['Verificação de uso permitido','Contrato de locação seguro','Opções em Campo Grande e interior','Assessoria jurídica básica'], msg:'Olá! Tenho interesse em alugar um terreno em MS. Vim do site da Fávaro.' },
+  },
+  vender: {
+    _default:  { tag:'Venda do seu imóvel', title:'Venda com a Fávaro ao seu lado', desc:'A Fávaro avalia seu imóvel gratuitamente, define o preço certo para o mercado atual e cuida de toda a divulgação para vender mais rápido e pelo melhor valor.', items:['Avaliação gratuita de mercado','Divulgação em portais e redes sociais','Qualificação de compradores sérios','Acompanhamento jurídico até o fechamento'], msg:'Olá! Tenho um imóvel para vender e gostaria de uma avaliação gratuita com a Fávaro.' },
+  }
+};
+
+function calcBusca() {
+  const fin = bAnswers.fin || 'comprar';
+  const tipo = bAnswers.tipo || 'casa';
+  const prazo = bAnswers.prazo || '';
+
+  let result;
+  if(fin === 'vender') {
+    result = bDB.vender._default;
+  } else {
+    const finDB = bDB[fin] || bDB.comprar;
+    result = finDB[tipo] || finDB.casa;
+  }
+
+  // Urgência extra
+  let msg = result.msg;
+  if(prazo === 'agora') msg += ' Preciso com urgência!';
+  if(bAnswers.valor) {
+    const vals = { ate200:'Orçamento: até R$200k', '200a500':'Orçamento: R$200k–500k', '500a1m':'Orçamento: R$500k–1mi', acima1m:'Orçamento: acima de R$1mi' };
+    msg += ' ' + (vals[bAnswers.valor] || '');
+  }
+
+  document.getElementById('br-tag').textContent = result.tag;
+  document.getElementById('br-title').textContent = result.title;
+  document.getElementById('br-desc').textContent = result.desc;
+  document.getElementById('br-items').innerHTML = result.items.map(i=>`<div class="br-item">${i}</div>`).join('');
+
+  const cta = document.getElementById('br-cta');
+  cta.href = 'https://wa.me/message/546B5JFHFTKGA1?text=' + encodeURIComponent(msg);
+  // Use Fávaro linktree as fallback
+  cta.href = 'https://linktr.ee/imobiliariafava';
+
+  const res = document.getElementById('busca-result');
+  res.classList.remove('show');
+  void res.offsetWidth;
+  res.classList.add('show');
+  document.getElementById('bf-btn').style.display = 'none';
+  res.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function resetBusca() {
+  Object.keys(bAnswers).forEach(k=>delete bAnswers[k]);
+  document.querySelectorAll('.bf-chip').forEach(c=>c.classList.remove('on'));
+  document.getElementById('busca-result').classList.remove('show');
+  document.getElementById('bf-btn').disabled = true;
+  document.getElementById('bf-btn').style.display = 'block';
+}
+</script>
+</body>
+</html>
